@@ -18,6 +18,7 @@
  *
  */
 // const infuraKey = "e5ee8e790fa34571a51173b4aa1081dd";
+const Web3 = require('web3');
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const url = 'https://ropsten.infura.io/v3/e5ee8e790fa34571a51173b4aa1081dd';
 const privateKey = "c83d9e02a1c92bb88d08f753674d94347d43bf10161d6b7211c0846068b10f86";
@@ -53,6 +54,7 @@ module.exports = {
         return new HDWalletProvider(privateKey, url);
       },
       network_id: '3',
+      gasPrice: Web3.utils.toWei('140', 'gwei'),
     },
     // Another network with more advanced options...
     // advanced: {
