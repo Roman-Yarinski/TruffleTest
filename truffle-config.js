@@ -17,10 +17,11 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
+// const infuraKey = "e5ee8e790fa34571a51173b4aa1081dd";
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const url = 'https://ropsten.infura.io/v3/e5ee8e790fa34571a51173b4aa1081dd';
+const privateKey = "c83d9e02a1c92bb88d08f753674d94347d43bf10161d6b7211c0846068b10f86";
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
@@ -42,11 +43,17 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+    host: "127.0.0.1",     // Localhost (default: none)
+    port: 8545,            // Standard Ethereum port (default: none)
+    network_id: "*",       // Any network (default: none)
+    },
+    ropsten: {
+      provider: function() {
+        return new HDWalletProvider(privateKey, url);
+      },
+      network_id: '3',
+    },
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
